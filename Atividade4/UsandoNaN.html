@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Pedra Papel Tesoura</title>
+</head>
+<body>
+    <h2>Pedra, Papel ou Tesoura</h2>
+
+    <p>Você: <b id="escolha-jogador">-</b> | PC: <b id="escolha-computador">-</b></p>
+    <p id="mensagem">Faça sua escolha:</p>
+    <p>Placar: Você <b id="placar-jogador">0</b> x <b id="placar-computador">0</b> PC | Empates: <b id="placar-empate">0</b></p>
+
+    <button onclick="jogar('Pedra')">Pedra</button>
+    <button onclick="jogar('Papel')">Papel</button>
+    <button onclick="jogar('Tesoura')">Tesoura</button>
+    <button onclick="resetar()">Resetar</button>
+
+    <script src="tesoura.js"></script>
+</body>
+</html>
