@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Atividade 8 - Interativa</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 30px; background: #eceff1; color: #333; }
+        .card { background: white; padding: 20px; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); max-width: 500px; }
+        h3 { margin-top: 0; color: #1a73e8; }
+        input { padding: 8px; margin: 5px 0; border: 1px solid #ccc; border-radius: 4px; width: 60px; }
+        .input-group { margin-bottom: 15px; }
+        button { cursor: pointer; padding: 10px 20px; background: #1a73e8; color: white; border: none; border-radius: 6px; font-weight: bold; transition: 0.3s; }
+        button:hover { background: #1557b0; }
+        .resultado { margin-top: 15px; padding: 10px; border-left: 4px solid #1a73e8; background: #f8f9fa; min-height: 20px; word-wrap: break-word; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h3>1. Soma e Quadrados</h3>
+        <p>Insira 3 números:</p>
+        <div class="input-group">
+            <input type="number" id="n1" value="0">
+            <input type="number" id="n2" value="0">
+            <input type="number" id="n3" value="0">
+        </div>
+        <button onclick="executarEx1()">Calcular</button>
+        <div id="res1" class="resultado">Aguardando entrada...</div>
+    </div>
+
+    <div class="card">
+        <h3>2. Gerador de Palavras</h3>
+        <p>Insira 5 letras (separadas por vírgula):</p>
+        <div class="input-group">
+            <input type="text" id="letrasInput" value="A,B,C,D,E" style="width: 80%;">
+        </div>
+        <button onclick="executarEx2()">Gerar 10 Palavras</button>
+        <div id="res2" class="resultado">Aguardando entrada...</div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
