@@ -2,40 +2,30 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Atividade 8 - Interativa</title>
+    <title>Atividade 8</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 30px; background: #eceff1; color: #333; }
-        .card { background: white; padding: 20px; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); max-width: 500px; }
-        h3 { margin-top: 0; color: #1a73e8; }
-        input { padding: 8px; margin: 5px 0; border: 1px solid #ccc; border-radius: 4px; width: 60px; }
-        .input-group { margin-bottom: 15px; }
-        button { cursor: pointer; padding: 10px 20px; background: #1a73e8; color: white; border: none; border-radius: 6px; font-weight: bold; transition: 0.3s; }
-        button:hover { background: #1557b0; }
-        .resultado { margin-top: 15px; padding: 10px; border-left: 4px solid #1a73e8; background: #f8f9fa; min-height: 20px; word-wrap: break-word; }
+        body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+        .bloco { border: 1px solid #ccc; padding: 15px; margin-bottom: 20px; border-radius: 5px; }
+        input { margin: 5px; padding: 5px; }
+        button { padding: 7px 15px; cursor: pointer; background: #28a745; color: white; border: none; }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        <h3>1. Soma e Quadrados</h3>
-        <p>Insira 3 números:</p>
-        <div class="input-group">
-            <input type="number" id="n1" value="0">
-            <input type="number" id="n2" value="0">
-            <input type="number" id="n3" value="0">
-        </div>
-        <button onclick="executarEx1()">Calcular</button>
-        <div id="res1" class="resultado">Aguardando entrada...</div>
+    <div class="bloco">
+        <h2>Exercício 1</h2>
+        <input type="number" id="v1" placeholder="N1">
+        <input type="number" id="v2" placeholder="N2">
+        <input type="number" id="v3" placeholder="N3">
+        <button onclick="fazerEx1()">Calcular</button>
+        <p id="txt1"></p>
     </div>
 
-    <div class="card">
-        <h3>2. Gerador de Palavras</h3>
-        <p>Insira 5 letras (separadas por vírgula):</p>
-        <div class="input-group">
-            <input type="text" id="letrasInput" value="A,B,C,D,E" style="width: 80%;">
-        </div>
-        <button onclick="executarEx2()">Gerar 10 Palavras</button>
-        <div id="res2" class="resultado">Aguardando entrada...</div>
+    <div class="bloco">
+        <h2>Exercício 2</h2>
+        <input type="text" id="letras" placeholder="Digite 5 letras (ex: A,B,C,D,E)">
+        <button onclick="fazerEx2()">Gerar Palavras</button>
+        <div id="txt2"></div>
     </div>
 
     <script src="script.js"></script>
