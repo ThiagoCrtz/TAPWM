@@ -1,39 +1,42 @@
-function calcularValores(a, b, c) {
-    const soma = a + b + c;
-    const quad1 = a * a;
-    const quad2 = b * b;
-    return `A soma dos três números é: ${soma}, o quadrado do primeiro é: ${quad1} e o quadrado do segundo é: ${quad2}`;
+// 1
+function calcular(a, b, c) {
+    let soma = a + b + c;
+    let q1 = a * a;
+    let q2 = b * b;
+    return "A soma dos três números é:" + soma + ", o quadrado do primeiro é:" + q1 + " e o quadrado do segundo é:" + q2;
 }
 
-function formarPalavras(letras) {
-    let palavras = [];
-    while (palavras.length < 10) {
-        let shuffle = [...letras].sort(() => Math.random() - 0.5).join('');
-        if (!palavras.includes(shuffle)) {
-            Array.prototype.push.apply(palavras, [shuffle]);
+function fazerEx1() {
+    let n1 = Number(document.getElementById('v1').value);
+    let n2 = Number(document.getElementById('v2').value);
+    let n3 = Number(document.getElementById('v3').value);
+    
+    let resultado = calcular.apply(null, [n1, n2, n3]);
+    document.getElementById('txt1').innerText = resultado;
+}
+
+function gerar(letras) {
+    let lista = [];
+    while (lista.length < 10) {
+        let palavra = [...letras].sort(() => Math.random() - 0.5).join('');
+        
+        if (!lista.includes(palavra)) {
+
+            Array.prototype.push.apply(lista, [palavra]);
         }
     }
-    return palavras;
+    return lista;
 }
 
-function executarEx1() {
-    const val1 = Number(document.getElementById('n1').value);
-    const val2 = Number(document.getElementById('n2').value);
-    const val3 = Number(document.getElementById('n3').value);
-    
-    const frase = calcularValores.apply(null, [val1, val2, val3]);
-    document.getElementById('res1').innerText = frase;
-}
-
-function executarEx2() {
-    const input = document.getElementById('letrasInput').value;
-    const arrayLetras = input.split(',').map(l => l.trim().toUpperCase()).filter(l => l !== "");
+function fazerEx2() {
+    let entrada = document.getElementById('letras').value;
+    let arrayLetras = entrada.split(',').map(l => l.trim());
 
     if (arrayLetras.length !== 5) {
-        alert("Por favor, insira exatamente 5 letras separadas por vírgula.");
+        alert("Digite 5 letras separadas por vírgula!");
         return;
     }
 
-    const lista = formarPalavras(arrayLetras);
-    document.getElementById('res2').innerHTML = "<strong>Palavras geradas:</strong><br>" + lista.join(' | ');
+    let resultado = gerar(arrayLetras);
+    document.getElementById('txt2').innerHTML = resultado.join('<br>');
 }
