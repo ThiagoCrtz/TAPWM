@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade JS Refatorada</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        .container { border: 1px solid #ccc; padding: 15px; margin-bottom: 20px; background-color: #f9f9f9; }
+        label { display: inline-block; width: 120px; font-weight: bold; }
+        input { padding: 5px; margin-bottom: 5px; }
+        button { padding: 8px 12px; margin-top: 10px; cursor: pointer; }
+        .resultado { margin-top: 15px; font-weight: bold; color: #0056b3; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Exercício 1: Retângulo</h2>
+        
+        <div>
+            <label for="base">Base:</label>
+            <input type="number" id="base">
+        </div>
+        
+        <div>
+            <label for="altura">Altura:</label>
+            <input type="number" id="altura">
+        </div>
+
+        <button onclick="calcular()">Calcular Área</button>
+
+        <p id="retangulo" class="resultado"></p>
+    </div>
+
+    <div class="container">
+        <h2>Exercício 2: Sistema Bancário</h2>
+
+        <h3>Conta Corrente</h3>
+        <div><label for="nome1">Nome:</label><input type="text" id="nome1"></div>
+        <div><label for="banco1">Banco:</label><input type="text" id="banco1"></div>
+        <div><label for="numero1">Número:</label><input type="number" id="numero1"></div>
+        <div><label for="saldo1">Saldo:</label><input type="number" id="saldo1"></div>
+        <div><label for="especial1">Limite Especial:</label><input type="number" id="especial1"></div>
+        
+        <button onclick="criarCorrente()">Criar Corrente</button>
+        <p id="conta" class="resultado"></p>
+
+        <hr>
+
+        <h3>Conta Poupança</h3>
+        <div><label for="nome2">Nome:</label><input type="text" id="nome2"></div>
+        <div><label for="banco2">Banco:</label><input type="text" id="banco2"></div>
+        <div><label for="numero2">Número:</label><input type="number" id="numero2"></div>
+        <div><label for="saldo2">Saldo:</label><input type="number" id="saldo2"></div>
+        <div><label for="juros">Juros (%):</label><input type="number" id="juros"></div>
+        <div><label for="vencimento">Vencimento:</label><input type="text" id="vencimento"></div>
+        
+        <button onclick="criarPoupanca()">Criar Poupança</button>
+        <p id="poupanca" class="resultado"></p>
+    </div>
+
+    <script>
+        class Retangulo {
+            constructor(base, altura) {
+                this.base = Number(base);
+                this.altura = Number(altura);
+            }
+
+            calcularArea() {
+                return this.base * this.altura;
+            }
+        }
+
+        function calcular() {
+            const base = document.getElementById("base").value;
+            const altura = document.getElementById("altura").value;
+            const r1 = new Retangulo(base, altura);
+            
+            document.getElementById("retangulo").innerHTML = 
+                `Área do retângulo: ${r1.calcularArea()}`;
+        }
+
+        class Conta {
+            constructor(nome, banco, numero, saldo) {
+                this._nome = nome;
+                this._banco = banco;
+                this._numero = numero;
+                this._saldo = Number(saldo);
+            }
+
+            get nome() { return this._nome; }
+            get banco() { return this._banco; }
+            get numero() { return this._numero; }
+            get saldo() { return this._saldo; }
+        }
+
+        class Corrente extends Conta {
+            constructor(nome, banco, numero, saldo, saldoEspecial) {
+                super(nome, banco, numero, saldo);
+                this._saldoEspecial = Number(saldoEspecial);
+            }
+
+            get saldoEspecial() { return this._saldoEspecial; }
+        }
+
+        class Poupanca extends Conta {
+            constructor(nome, banco, numero, saldo, juros, vencimento) {
+                super(nome, banco, numero, saldo);
+                this._juros = Number(juros);
+                this._vencimento = vencimento;
+            }
+
+            get juros() { return this._juros; }
+            get vencimento() { return this._vencimento; }
+        }
+
+        function criarCorrente() {
+            const conta1 = new Corrente(
+                document.getElementById("nome1").value,
+                document.getElementById("banco1").value,
+                document.getElementById("numero1").value,
+                document.getElementById("saldo1").value,
+                document.getElementById("especial1").value
+            );
+
+            document.getElementById("conta").innerHTML = 
+                `Corrente: ${conta1.nome} | Banco: ${conta1.banco} | 
+                Nº: ${conta1.numero} | Saldo: R$ ${conta1.saldo.toFixed(2)} | 
+                Limite Especial: R$ ${conta1.saldoEspecial.toFixed(2)}`;
+        }
+
+        function criarPoupanca() {
+            const conta2 = new Poupanca(
+                document.getElementById("nome2").value,
+                document.getElementById("banco2").value,
+                document.getElementById("numero2").value,
+                document.getElementById("saldo2").value,
+                document.getElementById("juros").value,
+                document.getElementById("vencimento").value
+            );
+
+            document.getElementById("poupanca").innerHTML = 
+                `Poupança: ${conta2.nome} | Banco: ${conta2.banco} | 
+                Nº: ${conta2.numero} | Saldo: R$ ${conta2.saldo.toFixed(2)} | 
+                Juros: ${conta2.juros}% | Vencimento: ${conta2.vencimento}`;
+        }
+    </script>
+</body>
+</html>
