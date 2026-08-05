@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Atividade 15</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#f0f8ff;
+    text-align:center;
+    margin-top:80px;
+}
+
+select{
+    width:350px;
+    padding:8px;
+    font-size:16px;
+}
+</style>
+
+<script>
+
+function abrirCurso(){
+
+    let curso = document.getElementById("curso").value;
+
+    if(curso==""){
+        return;
+    }
+
+    if(confirm("Deseja abrir informações sobre este curso?")){
+
+        let titulo = "";
+        let texto = "";
+
+        switch(curso){
+
+            case "ADS":
+                titulo = "Análise e Desenvolvimento de Sistemas";
+                texto = "Forma profissionais para desenvolver sistemas, sites, aplicativos e bancos de dados.";
+                break;
+
+            case "Alimentos":
+                titulo = "Alimentos";
+                texto = "Curso voltado para tecnologia, produção e controle de qualidade de alimentos.";
+                break;
+
+            case "Logística":
+                titulo = "Logística";
+                texto = "Forma profissionais para atuar em transporte, armazenagem e cadeia de suprimentos.";
+                break;
+
+            case "Manufatura":
+                titulo = "Manufatura Avançada";
+                texto = "Curso voltado para automação industrial, robótica e Indústria 4.0.";
+                break;
+
+            case "Polímeros":
+                titulo = "Polímeros";
+                texto = "Forma profissionais para trabalhar com plásticos, borrachas e materiais poliméricos.";
+                break;
+
+            case "Projetos":
+                titulo = "Projetos Mecânicos";
+                texto = "Capacita profissionais para desenvolver projetos utilizando softwares CAD.";
+                break;
+
+            case "Biomedicos":
+                titulo = "Sistemas Biomédicos";
+                texto = "Curso voltado para manutenção e gestão de equipamentos hospitalares.";
+                break;
+        }
+
+        let novaJanela = window.open("", "", "width=600,height=300");
+
+        novaJanela.document.write(`
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <title>${titulo}</title>
+                <style>
+                    body{
+                        font-family:Arial;
+                        padding:20px;
+                        background:#f4f4f4;
+                    }
+                    h2{
+                        color:blue;
+                    }
+                </style>
+            </head>
+            <body>
+                <h2>${titulo}</h2>
+                <p>${texto}</p>
+            </body>
+            </html>
+        `);
+
+        novaJanela.document.close();
+    }
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<h1>Cursos da Fatec Sorocaba</h1>
+
+<p>Escolha um curso:</p>
+
+<select id="curso" onchange="abrirCurso()">
+    <option value="">Selecione...</option>
+    <option value="ADS">Análise e Desenvolvimento de Sistemas</option>
+    <option value="Alimentos">Alimentos</option>
+    <option value="Logística">Logística</option>
+    <option value="Manufatura">Manufatura Avançada</option>
+    <option value="Polímeros">Polímeros</option>
+    <option value="Projetos">Projetos Mecânicos</option>
+    <option value="Biomedicos">Sistemas Biomédicos</option>
+</select>
+
+</body>
+</html>
