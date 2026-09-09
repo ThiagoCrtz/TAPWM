@@ -1,0 +1,1 @@
+module.exports = (app) => { app.get('/inscricao', (req, res) => res.render('admin/inscricao')); };

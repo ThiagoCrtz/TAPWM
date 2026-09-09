@@ -1,0 +1,1 @@
+module.exports = (app) => { app.get('/novidades', (req, res) => res.send('Página de Novidades')); };
